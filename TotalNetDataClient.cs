@@ -22,6 +22,12 @@ namespace Total.Net
 	/// <summary>
 	/// Реализует клиент передачи данных через TCP
 	/// </summary>
+	/// 
+	public struct ServerConstants
+	{
+		public static int bufferSize = 32768;
+	}
+	
 	public class DataClient
 	{
 		//int currentPort;
@@ -71,7 +77,7 @@ namespace Total.Net
 			try {
 				byte[] buffer = Encoding.ASCII.GetBytes((String)StateInfo);
 				client.GetStream().Write(buffer, 0, buffer.Length);
-				byte[] bufer = new byte[4096];
+				byte[] bufer = new byte[ServerConstants.bufferSize];
 				int count;
 				count = client.GetStream().Read(bufer, 0, bufer.Length);
 				callback(Encoding.ASCII.GetString(bufer, 0, count));

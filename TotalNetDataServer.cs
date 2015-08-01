@@ -119,7 +119,7 @@ namespace Total.Net
 		
 		public void Start()
 		{
-			byte[] bufer = new byte[4096];
+			byte[] bufer = new byte[ServerConstants.bufferSize];
 			int count;
 			bool closeConnection = false;
 			string request;
